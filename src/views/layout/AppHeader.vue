@@ -10,31 +10,54 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="javscript:void(0)" :title="title">
-          <img class="header-img pull-left" :src="logo" />
+          <img v-show="logo" class="navbar-brand-img" :src="logo" />
+          <span v-show="!logo" class="navbar-brand-text" v-text="title"></span>
         </a>
+        <upser v-if="isLogin"></upser>
+        <div class="navbar-brand-action pull-right">
+          <a class="btn btn-lg btn-default" href="javscript:void(0)" v-text="loginText"></a>
+          <a class="btn btn-lg btn-success" href="javscript:void(0)">上传视频</a>
+        </div>
       </div>
     </div><!-- /.container-fluid -->
   </header>
 </template>
 
 <script>
-import logo from '@/assets/logo.png'
+import Upser from '@/components/Upser.vue'
+
 export default {
   name: 'app-header',
+  data () {
+    return {
+      isLogin: true,
+      loginText: '退出'
+    }
+  },
   props: {
     title: {
       default: 'Vue-first-project'
     },
-    logo: {
-      default: logo
-    }
+    logo: String
+  },
+  components: {
+    Upser
   }
 }
 </script>
 
 <style>
-.header-img {
-    max-width: 100%;
-    height: 24px;
+.navbar-header {
+  height: 90px;
+}
+.navbar-brand-img, .navbar-brand-text {
+  max-width: 100%;
+  height: 64px;
+  line-height:64px;
+}
+.navbar-brand-action {
+  position: absolute;
+  top: 25px;
+  right: 15px;
 }
 </style>

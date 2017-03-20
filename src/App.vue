@@ -1,17 +1,24 @@
 <template>
   <div id="app">
-    <app-header></app-header>
+    <app-header :logo="logo" :title="title"></app-header>
     <router-view></router-view>
     <app-footer></app-footer>
   </div>
 </template>
 
 <script>
+import logo from '@/assets/logo.png'
 import AppHeader from './views/layout/AppHeader.vue'
 import AppFooter from './views/layout/AppFooter.vue'
 
 export default {
   name: 'app',
+  data () {
+    return {
+      logo: logo,
+      title: 'TestDemo'
+    }
+  },
   components: {
     AppHeader,
     AppFooter
