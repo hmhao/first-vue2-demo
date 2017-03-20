@@ -15,7 +15,7 @@
         </a>
         <upser v-if="isLogin"></upser>
         <div class="navbar-brand-action pull-right">
-          <a class="btn btn-lg btn-default" href="javscript:void(0)" v-text="loginText"></a>
+          <a class="btn btn-lg btn-default" href="javscript:void(0)" v-text="loginText" @click="emitLogin"></a>
           <a class="btn btn-lg btn-success" href="javscript:void(0)">上传视频</a>
         </div>
       </div>
@@ -30,8 +30,8 @@ export default {
   name: 'app-header',
   data () {
     return {
-      isLogin: true,
-      loginText: '退出'
+      isLogin: false,
+      loginText: '登录'
     }
   },
   props: {
@@ -39,6 +39,23 @@ export default {
       default: 'Vue-first-project'
     },
     logo: String
+  },
+  methods: {
+    emitLogin () {
+      if (this.isLogin) {
+        this.isLogin = false
+        this.loginText = '登录'
+        this.$root.$emit('logouted')
+      } else {
+        this.$root.$emit('login')
+      }
+    }
+  },
+  created () {
+    this.$root.$on('logined', () => {
+      this.isLogin = true
+      this.loginText = '退出'
+    })
   },
   components: {
     Upser
