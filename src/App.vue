@@ -1,17 +1,26 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <app-header></app-header>
     <router-view></router-view>
+    <app-footer></app-footer>
   </div>
 </template>
 
 <script>
+import AppHeader from './views/layout/AppHeader.vue'
+import AppFooter from './views/layout/AppFooter.vue'
+
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    AppHeader,
+    AppFooter
+  }
 }
 </script>
 
 <style src="bootstrap"></style>
+<style src="font-awesome"></style>
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -19,6 +28,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
