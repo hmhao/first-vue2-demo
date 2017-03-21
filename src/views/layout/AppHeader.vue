@@ -30,8 +30,17 @@ export default {
   name: 'app-header',
   data () {
     return {
-      isLogin: false,
       loginText: '登录'
+    }
+  },
+  computed: {
+    isLogin: {
+      get () {
+        return this.$store.state.isLogin
+      },
+      set (value) {
+        this.$store.commit('login', value)
+      }
     }
   },
   props: {

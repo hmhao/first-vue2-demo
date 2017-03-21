@@ -3,7 +3,7 @@
     <div class="container">
       <div class="content">
         <p>
-          <strong>Project </strong> by <a href="https://github.com/hmhao">Hmhao</a>. The source code is licensed
+          <strong>Project </strong> by <a :href="repository">{{author}}</a>. The source code is licensed
           <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
           is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
         </p>
@@ -17,3 +17,16 @@
   </footer>
 </template>
 
+<script>
+export default {
+  name: 'app-footer',
+  computed: {
+    author () {
+      return this.$store.state.author
+    },
+    repository () {
+      return this.$store.state.repository
+    }
+  }
+}
+</script>
