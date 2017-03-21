@@ -1,15 +1,41 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
+import Hello from '@/views/Hello'
+import Home from '@/views/Home'
+import Detail from '@/views/Detail'
+import Follow from '@/views/Follow'
+import Fan from '@/views/Fan'
+import Production from '@/views/Production'
 
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'Hello',
-      component: Hello
-    }
-  ]
+  mode: 'history',
+  routes: [{
+    path: '/',
+    name: 'Hello',
+    component: Hello
+  }, {
+    path: '/home',
+    redirect: '/home/detail',
+    name: 'Home',
+    component: Home,
+    children: [{
+      path: 'detail',
+      name: 'Detail',
+      component: Detail
+    }, {
+      path: 'follow',
+      name: 'Follow',
+      component: Follow
+    }, {
+      path: 'fan',
+      name: 'Fan',
+      component: Fan
+    }, {
+      path: 'production',
+      name: 'Production',
+      component: Production
+    }]
+  }]
 })

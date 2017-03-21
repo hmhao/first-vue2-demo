@@ -1,18 +1,19 @@
 <template>
   <div class="media">
     <div class="media-left">
-      <a href="javscript:void(0)">
+      <router-link :to="basepath">
         <img class="media-object img-rounded avatar" :src="avatar" :alt="name">
-      </a>
+      </router-link>
     </div>
     <div class="media-body">
       <h4 class="media-heading">{{name}}</h4>
       <div>
-          <a v-for="item in data" href="javscript:void(0)" class="pull-left text-center">
+          <router-link v-for="item in data" :to="basepath + item.path" :key="item.path"
+            class="pull-left text-center">
             <span>{{item.num}}</span>
             <br>
             <span>{{item.title}}</span>
-          </a>
+          </router-link>
       </div>
     </div>
   </div>
@@ -21,21 +22,27 @@
 <script>
 import avatar from '@/assets/avatar.png'
 
+let basepath = '/home/'
+
 export default {
   name: 'upser',
   data () {
     return {
       avatar: avatar,
       name: 'UP主',
+      basepath: basepath,
       data: [{
         title: '关注',
-        num: 112
+        num: 112,
+        path: 'follow'
       }, {
         title: '粉丝',
-        num: 12335223
+        num: 12335223,
+        path: 'fan'
       }, {
         title: '作品',
-        num: 88
+        num: 88,
+        path: 'production'
       }]
     }
   }

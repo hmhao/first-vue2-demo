@@ -50,6 +50,7 @@ export default {
       this.$refs.modal.hide()
       this.$root.$emit('logined')
       this.onClose()
+      this.$router.push({path: '/home'})
     },
     onClose () {
       this.$root.$emit('hidden::login')

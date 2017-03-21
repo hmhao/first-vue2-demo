@@ -46,6 +46,7 @@ export default {
         this.isLogin = false
         this.loginText = '登录'
         this.$root.$emit('logouted')
+        this.$router.push({path: '/'})
       } else {
         this.$root.$emit('login')
       }
