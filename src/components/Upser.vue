@@ -8,7 +8,7 @@
     <div class="media-body">
       <h4 class="media-heading">{{name}}</h4>
       <div>
-          <router-link v-for="item in data" :to="basepath + item.path" :key="item.path"
+          <router-link v-for="item in data" :to="basepath + item.key" :key="item.key"
             class="pull-left text-center">
             <span>{{item.num}}</span>
             <br>
@@ -20,31 +20,30 @@
 </template>
 
 <script>
-import avatar from '@/assets/avatar.png'
-
 let basepath = '/home/'
 
 export default {
   name: 'upser',
   data () {
     return {
-      avatar: avatar,
-      name: 'UP主',
+      avatar: '',
+      name: '',
       basepath: basepath,
-      data: [{
-        title: '关注',
-        num: 112,
-        path: 'follow'
-      }, {
-        title: '粉丝',
-        num: 12335223,
-        path: 'fan'
-      }, {
-        title: '作品',
-        num: 88,
-        path: 'production'
-      }]
+      data: []
     }
+  },
+  created () {
+    this.$http
+        .get('/static/data/upser.json', {params: {'upserId': 3422}})
+        .then(response => {
+          // get body data
+          let result = response.body
+          this.avatar = result.avatar
+          this.name = result.name
+          Array.prototype.push.apply(this.data, result.data)
+        }, response => {
+          // error callback
+        })
   }
 }
 </script>

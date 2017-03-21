@@ -30,6 +30,8 @@
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+
+    <div class="modal-backdrop in" v-if="visible" key="modal-backdrop"></div>
   </transition-group>
 </template>
 

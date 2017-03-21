@@ -1,11 +1,16 @@
 <template>
-  <div>
-    <ul class="nav nav-pills nav-stacked">
-      <router-link v-for="nav in navs" :to="basepath + nav.path" tag="li" active-class="active" :key="nav.path">
-        <a>{{nav.title}}</a>
-      </router-link>
-    </ul>
-    <router-view></router-view>
+  <div class="row">
+    <div class="col-md-2">
+      <ul class="nav nav-pills nav-stacked">
+        <router-link v-for="nav in navs" :to="basepath + nav.path" :key="nav.path" 
+            tag="li" active-class="active" >
+          <a>{{nav.title}}</a>
+        </router-link>
+      </ul>
+    </div>
+    <div class="col-md-10">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -35,8 +40,6 @@ export default {
 }
 </script>
 
-<style scoped>
-.nav {
-  width: 160px;
-}
+<style>
+
 </style>

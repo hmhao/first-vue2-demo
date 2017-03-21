@@ -1,0 +1,17 @@
+{
+  "avatar": "/static/img/avatar.png",
+  "name": "UP主",
+  "data": [{
+    "title": "关注",
+    "num": 112,
+    "key": "follow"
+  }, {
+    "title": "粉丝",
+    "num": 12335223,
+    "key": "fan"
+  }, {
+    "title": "作品",
+    "num": 88,
+    "key": "production"
+  }]
+}

@@ -9,7 +9,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="javscript:void(0)" :title="title">
+        <a class="navbar-brand" href="/" :title="title">
           <img v-show="logo" class="navbar-brand-img" :src="logo" />
           <span v-show="!logo" class="navbar-brand-text" v-text="title"></span>
         </a>
