@@ -13,10 +13,10 @@
           <img v-show="logo" class="navbar-brand-img" :src="logo" />
           <span v-show="!logo" class="navbar-brand-text" v-text="title"></span>
         </a>
-        <upser v-if="isLogin"></upser>
+        <upser v-if="isLogin" v-bind="upserHeaderInfo"></upser>
         <div class="navbar-brand-action pull-right">
-          <a class="btn btn-lg btn-default" href="javscript:void(0)" v-text="loginText" @click="emitLogin"></a>
-          <a class="btn btn-lg btn-success" href="javscript:void(0)">上传视频</a>
+          <a class="btn btn-lg btn-default" href="javascript:void(0)" v-text="loginText" @click="emitLogin"></a>
+          <a class="btn btn-lg btn-success" href="javascript:void(0)">上传视频</a>
         </div>
       </div>
     </div><!-- /.container-fluid -->
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import Upser from '@/components/Upser.vue'
 
 export default {
@@ -34,14 +35,7 @@ export default {
     }
   },
   computed: {
-    isLogin: {
-      get () {
-        return this.$store.state.isLogin
-      },
-      set (value) {
-        this.$store.commit('login', value)
-      }
-    }
+    ...mapGetters(['isLogin', 'upserHeaderInfo'])
   },
   props: {
     title: {
@@ -49,23 +43,26 @@ export default {
     },
     logo: String
   },
+  watch: {
+    isLogin (value) {
+      if (value) {
+        this.loginText = '退出'
+        this.$router.push({path: '/home'})
+      } else {
+        this.loginText = '登录'
+      }
+    }
+  },
   methods: {
     emitLogin () {
       if (this.isLogin) {
-        this.isLogin = false
-        this.loginText = '登录'
+        this.$store.dispatch('logout')
         this.$root.$emit('logouted')
         this.$router.push({path: '/'})
       } else {
         this.$root.$emit('login')
       }
     }
-  },
-  created () {
-    this.$root.$on('logined', () => {
-      this.isLogin = true
-      this.loginText = '退出'
-    })
   },
   components: {
     Upser

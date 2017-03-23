@@ -3,11 +3,11 @@
     <form class="text-left">
       <div class="form-group">
         <label for="username">用户名</label>
-        <input type="text" class="form-control" id="username" placeholder="用户名">
+        <input type="text" class="form-control" id="username" placeholder="用户名" v-model="username">
       </div>
       <div class="form-group">
         <label for="password">密码</label>
-        <input type="password" class="form-control" id="password" placeholder="密码">
+        <input type="password" class="form-control" id="password" placeholder="密码" v-model="password">
       </div>
       <div class="checkbox">
         <label>
@@ -28,7 +28,7 @@ export default {
   name: 'login',
   data () {
     return {
-      username: '',
+      username: '3422',
       password: ''
     }
   },
@@ -48,13 +48,16 @@ export default {
   methods: {
     onSubmit () {
       this.$refs.modal.hide()
-      this.$root.$emit('logined')
-      this.onClose()
-      this.$router.push({path: '/home'})
+      this.$store.dispatch('login', this.username)
     },
     onClose () {
       this.$root.$emit('hidden::login')
     }
+  },
+  created () {
+    this.$root.$on('logined', () => {
+      this.onClose()
+    })
   },
   components: {
     Modal

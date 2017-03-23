@@ -1,17 +1,21 @@
 {
   "avatar": "/static/img/avatar.png",
   "name": "UP主",
-  "data": [{
+  "uid": "465823",
+  "regtime": "2017-3-21",
+  "birthday": "01-01",
+  "geo": "",
+  "tags": ["搞笑", "电影"],
+  "follow": {
     "title": "关注",
-    "num": 112,
-    "key": "follow"
-  }, {
+    "num": 112
+  },
+  "fan": {
     "title": "粉丝",
-    "num": 12335223,
-    "key": "fan"
-  }, {
+    "num": 12335223
+  },
+  "production": {
     "title": "作品",
-    "num": 88,
-    "key": "production"
-  }]
+    "num": 88
+  }
 }
