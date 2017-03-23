@@ -4,17 +4,17 @@
       <tr class="text-center">
         <td>
           <h3>
-            <a class="item" href="#!/fans/follow">
-              <span class="name">关注</span>
-              <span class="quantity">122</span>
+            <a class="item" href="/home/follow">
+              <span class="name">{{upser.follow.title}}</span>
+              <span class="quantity">{{upser.follow.num | quantity}}</span>
             </a>
           </h3>
         </td>
         <td>
           <h3>
-            <a class="item" href="#!/fans/fans">
-              <span class="name">粉丝</span>
-              <span class="quantity space-fans">2.1万</span>
+            <a class="item" href="/home/fan">
+              <span class="name">{{upser.fan.title}}</span>
+              <span class="quantity">{{upser.fan.num | quantity}}</span>
             </a>
           </h3>
         </td>
@@ -67,7 +67,16 @@ export default {
   name: 'detail',
   computed: mapGetters({
     upser: 'upserDetailInfo'
-  })
+  }),
+  filters: {
+    quantity: function (value) {
+      let v = parseInt(value)
+      if (v > 10000) {
+        v = Math.round((v / 10000) * 100) / 100 + '万'
+      }
+      return v
+    }
+  }
 }
 </script>
 

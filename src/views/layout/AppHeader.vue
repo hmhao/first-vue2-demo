@@ -29,13 +29,11 @@ import Upser from '@/components/Upser.vue'
 
 export default {
   name: 'app-header',
-  data () {
-    return {
-      loginText: '登录'
-    }
-  },
   computed: {
-    ...mapGetters(['isLogin', 'upserHeaderInfo'])
+    ...mapGetters(['isLogin', 'upserHeaderInfo']),
+    loginText () {
+      return this.isLogin ? '退出' : '登录'
+    }
   },
   props: {
     title: {

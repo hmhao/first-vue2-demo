@@ -31,6 +31,26 @@ const getters = {
       geo: upser.geo || '未填写',
       tags: upser.tags || []
     }
+  },
+  upserFollowInfo: (state) => {
+    let upserFollow = state.upserFollow || {}
+    let list
+    if (upserFollow.list) {
+      list = upserFollow.list
+    } else {
+      list = []
+    }
+    return list
+  },
+  upserFanInfo: (state) => {
+    let upserFan = state.upserFan || {}
+    let list
+    if (upserFan.list) {
+      list = upserFan.list
+    } else {
+      list = []
+    }
+    return list
   }
 }
 

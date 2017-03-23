@@ -19,6 +19,38 @@ const actions = {
   },
   logout: ({ commit }) => {
     commit('LOGOUT')
+  },
+  // 获取用户关注信息
+  upserFollow: ({ state, commit }, upserid) => {
+    if (state.isLogin) {
+      Vue.http
+          .get('/static/data/follow.json', {params: {'upserId': upserid}})
+          .then(response => {
+            // get body data
+            let result = response.body
+            if (result.status) {
+              commit('UPSER_FOLLOW', result.data)
+            }
+          }, response => {
+            // error callback
+          })
+    }
+  },
+  // 获取用户粉丝信息
+  upserFan: ({ state, commit }, upserid) => {
+    if (state.isLogin) {
+      Vue.http
+          .get('/static/data/fan.json', {params: {'upserId': upserid}})
+          .then(response => {
+            // get body data
+            let result = response.body
+            if (result.status) {
+              commit('UPSER_FAN', result.data)
+            }
+          }, response => {
+            // error callback
+          })
+    }
   }
 }
 
