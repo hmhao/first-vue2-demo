@@ -1,6 +1,6 @@
-# first-project
+# first-vue2-demo
 
-> A Vue.js project
+> A Vue.js demo
 
 ## Build Setup
 
